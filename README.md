@@ -6,9 +6,7 @@
 
 ## IDE for C++, Python Code Editting and Documentation
 
-<img src="https://cdn.worldvectorlogo.com/logos/eclipse-11.svg" alt="Eclipse-C++ " height="50" title="Eclipse-C++ ">
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/128px-PyCharm_Icon.svg.png" alt="Pycharm" height="50" title="Pycharm">
-<img src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" alt="VS-Code"  height="50" title="VS-Code">
+<img src="https://cdn.worldvectorlogo.com/logos/eclipse-11.svg" alt="Eclipse-C++ " height="50" title="Eclipse-C++ "><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/128px-PyCharm_Icon.svg.png" alt="Pycharm" height="50" title="Pycharm"><img src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" alt="VS-Code"  height="50" title="VS-Code">
 
 | IDE | Usage | 
 | ------ | ----------- |
