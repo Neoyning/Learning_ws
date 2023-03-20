@@ -4,11 +4,12 @@
 
 ## Eigen Setup
 
- - Install Eigen [Eigen Download]
+ - Download Eigen, [Eigen Download]. Current Eigen version 3.4.0 
+ - Install Eigen from source by cmake [Eigen Make Install]
+ - (Optional) use `sudo apt-get install libeigen3-dev` for Eigen version 3.3.7
  - Using Eigen in CMake Projects [Cmake Eigen]
 
-
-> Note In Eigen, indices start at 0
+> NOTE: `cmake -DCMAKE_INSTALL_PREFIX=/usr ..` or `cmake -DCMAKE_INSTALL_PREFIX=/usr/local ..`  (in build folder) for `sudo make install` install directory
 
 ### Eigen Convenience typedefs
 
@@ -21,11 +22,12 @@
 >linear algebraic operations
 
  - Matrix**Nt**: `Matrix<t, N, N>`
- - Matrix**XNt**: `Matrix<type, Dynamic, N>`
+ - Matrix**XNt**: `Matrix<t, Dynamic, N>`
  - Matrix**Xt**: `Matrix<double, Dynamic, Dynamic>`
- - Matrix**NXt**: `Matrix<type, N, Dynamic>`
- - Vector**Nt**: `Matrix<type, N, 1>`
- - RowVector**Nt**: `Matrix<type, 1, N>`
+ - Matrix**NXt**: `Matrix<t, N, Dynamic>`
+ - ~~Matrix**MNt**: `Matrix<type, M, N>`~~
+ - Vector**Nt**: `Matrix<t, N, 1>`
+ - RowVector**Nt**: `Matrix<t, 1, N>`
 
 #### Array: 
 >coefficient-wise(element-wise) operations
@@ -46,7 +48,7 @@ For example, the statement `result = m.array() * n.array()` takes two matrices `
 | Block operation |  Dynamic-size block  | Fixed-size block  |
 | ------ | ----------- | ----------- |
 | `Block of size (p,q), starting at (i,j)`   | `matrix.block(i,j,p,q);` | `matrix.block<p,q>(i,j);` |
-> Indices `(i,j)` start at 0 !
+> Indices `(i,j)` start at 0 ! In Eigen, indices start at 0.
 > Note: Self block assignment may cause aliasing problem. Use `.eval()` for resolving.
 
 
@@ -54,3 +56,4 @@ For example, the statement `result = m.array() * n.array()` takes two matrices `
 
 [Eigen Download]: <https://eigen.tuxfamily.org/index.php?title=Main_Page>
 [Cmake Eigen]: <https://eigen.tuxfamily.org/dox/TopicCMakeGuide.html>
+[Eigen Make Install]: <http://eigen.tuxfamily.org/index.php?title=CMake>

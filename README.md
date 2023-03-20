@@ -24,6 +24,62 @@
  - **ROS Package**, in catkin_ws folder, use command `catkin config -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Release` 
  - **Cmake Project** use `cmake` [cmake CMakeLists.txt].
  - **ROS Package** use `catkin build` [catkin CMakeLists.txt] and  [catkin package.xml]
+ - Configure **Cmake** and **Eclipse** for project *debug* or *run*
+
+
+> **Method 1** `cmake -G"Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -DEigen3_DIR=$HOME/git/eigen-3.3.7 ../../src/learnCeres/` (Preferred). Or 
+
+> **Method 2** `set(CMAKE_BUILD_TYPE Debug)	#set to Debug or Release` in `CMakeLists.txt` file. 
+
+**Method 1** should implement before Eclipse importing; [Cmake + Eclipse]
+
++ `-G"Eclipse CDT4` generate Eclipse readable project;
++ `-D CMAKE_BUILD_TYPE=Debug` is equivalent of **Method 2**;
++ `-D Eigen3_DIR=$HOME/git/eigen-3.3.7` specify the `Eigen3_DIR`;
++ `../../src/learnCeres/` means in `eclipse-workspace` folder has build and source directories as sisters `eclipse-workspace/src` and  `eclipse-workspace/build`. Note that the `.cpp` source files and `CMakeLists.txt` should inside `eclipse-workspace/src/projectName`.
+
+
+ >NOTE 1: In Eclipse, set `Debug configuration`. Especially do search `C/C++ Application`. see [Debugging a Project]
+
+ >NOTE 2: Use **cmake-gui** to check cmake VARIABLE like `Ceres_DIR`, `Eigen2_DIR`, `CMAKE_BUILD_TYPE`, `CMAKE_INSTALL_PREFIX`, install GUI by
+
+ ```sh
+ sudo apt-get install libceres-dev
+ ```
+
+**Method 2** can use after **Method 1**, then in Eclipse importing `Existing Projects into Workspace`.
+
++ For **Cmake Project** importing, select root directory at `/home/neoy/eclipse-workspace/build/projectName` 
+
+cmake Workspace Folder Structure for Eclipse-C++
+```
+eclipse-workspace
+├── build
+│   ├── learnCeres
+│   └── learnEigen
+└── src
+    ├── learnCeres
+    └── learnEigen
+```
++ For **ROS Package** importing, select root directory at `/home/neoy/catkin_ws/build/rosPackageName`
+
+catkin Workspace Folder Structure for ROS
+
+```
+catkin_ws
+├── build
+│   ├── beginner_tutorials
+│   └── ros_package_template
+├── devel
+├── logs
+│   ├── beginner_tutorials
+│   └── ros_package_template
+└── src
+    ├── beginner_tutorials
+    └── ros_package_template -> /home/neoy/git/ros_package_template/
+```
+
+
 
 ### Pycharm Setup with Anaconda
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/128px-PyCharm_Icon.svg.png" alt="Pycharm" height="50" title="Pycharm"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/Anaconda_Logo.png/240px-Anaconda_Logo.png" alt="Anaconda" height="50" title="Anaconda">
@@ -71,3 +127,5 @@
 [cmake CMakeLists.txt]: <https://cmake.org/cmake/help/latest/guide/tutorial/index.html>
 [catkin CMakeLists.txt]: <http://wiki.ros.org/catkin/CMakeLists.txt>
 [catkin package.xml]: <http://wiki.ros.org/catkin/package.xml>
+[Debugging a project]: <https://rtist.hcldoc.com/help/index.jsp?topic=%2Forg.eclipse.cdt.doc.user%2Fgetting_started%2Fcdt_w_debug.htm>
+[Cmake + Eclipse]: <https://jvgomez.github.io/pages/how-to-configure-a-cc-project-with-eclipse-and-cmake.html>
