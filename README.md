@@ -4,83 +4,70 @@
 
 > This learning space is aim for concrete study of SLAM-related Programming skills!
 
-### NOTE: Clone remote github repositories and edit it locally
+## IDE for C++, Python Code Editting and Documentation
 
- - Create a New repository from your github page [Github]
- - Install VS Code in your Computer [VS Code Download]
- - Add Python and C++ Extension in VS Code [VS Keyboard Shortcut]
- - Clone a repository locally [Intro to Git in VS Code]
-
-## IDE
+<img src="https://cdn.worldvectorlogo.com/logos/eclipse-11.svg" alt="Eclipse-C++ " height="50" title="Eclipse-C++ ">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/128px-PyCharm_Icon.svg.png" alt="Pycharm" height="50" title="Pycharm">
+<img src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" alt="VS-Code"  height="50" title="VS-Code">
 
 | IDE | Usage | 
 | ------ | ----------- |
-| Eclipse C++  | C++ programming and coding reading |
+| Eclipse-C++  | C++ programming and coding reading |
 | Pycharm  | Python programming and debugging |
-| VS Code  | Source coding upload to git and doxygen edit  |
+| VS-Code  | Source coding upload to git and doxygen edit  |
 
-### Eclipse C++ Eigen Setup
-1. Project Properties -> C/C++ General -> Paths and Symbols -> (GNU C++) Source Location -> Link Folder -> check "Link to folder..." -> Browse -> select eingen3 folder(eg. /usr/include/eigen3) -> OK -> Apply
-2. `Project Properties -> C/C++ General -> Paths and Symbols ->` (GNU C++) Includes -> Add -> Workspace -> select "eigen3" -> OK -> Apply
-3. Click OK and close the Properties window.
+### Eclipse-C++ Setup with Cmake 
+<img src="https://cdn.worldvectorlogo.com/logos/eclipse-11.svg" alt="Eclipse-C++ "  height="50" title="Eclipse-C++ "><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Cmake.svg/192px-Cmake.svg.png" alt="Cmake" height="50" title="Cmake">  <img src="https://images.squarespace-cdn.com/content/v1/606d378755a86f589aa297b7/1621897385511-NS0QWVKNHWBGWPM39B7L/ros_logo_large.png" alt="ROS" height="50" title="ROS">
 
-## Learning-based TOOLs
+
+ - **Cmake Project**, in build folder, use command `cmake -G "Eclipse CDT4 - Unix Makefiles"`
+ - **ROS Package**, in catkin_ws folder, use command `catkin config -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Release` 
+ - **Cmake Project** use `cmake` [cmake CMakeLists.txt].
+ - **ROS Package** use `catkin build` [catkin CMakeLists.txt] and  [catkin package.xml]
+
+### Pycharm Setup with Anaconda
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/PyCharm_Icon.svg/128px-PyCharm_Icon.svg.png" alt="Pycharm" height="50" title="Pycharm"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/Anaconda_Logo.png/240px-Anaconda_Logo.png" alt="Anaconda" height="50" title="Anaconda">
+
+ - In Pycharm, use `Python Interpreter` to switch between different environments.
+
+### VS-Code Setup with Git
+
+<img src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" alt="VS-Code"  height="50" title="VS-Code"><img src="https://cdn.worldvectorlogo.com/logos/git-icon.svg" alt="Git" height="50" title="Git">
+
+> NOTE: Clone remote github repositories and edit it locally
+
+ - Create a New repository from github page [Github]
+ - Install VS-Code in your Computer [VS-Code Download] and [VS Keyboard Shortcut]
+ - Add Python and C++ Extension in VS-Code 
+ - Clone a repository locally [Intro to Git in VS-Code]
+
+
+## Learning-based Packages
+
+<img src="https://pytorch.org/assets/images/pytorch-logo.png" alt="Pytorch" height="50" title="Pytorch">
 
 | Package | Description | 
 | ------ | ----------- |
 | Pytorch   | NN Model Building, Training ,Testing and Evaluation|
 
 
-## Model-based TOOLs
+## Model-based Packages 
 
-| Package or Library | Description |
+<img src="https://eigen.tuxfamily.org/dox/Eigen_Silly_Professor_64x64.png" alt="Eigen"  height="50" title="Eigen">
+<img src="https://avatars.githubusercontent.com/u/6327561?s=200&v=4" alt="Ceres"  height="50" title="Ceres">
+
+| Package | Description |
 | ------ | ----------- |
 | Eigen   | Matrix Operation |
 | Ceres   | Computer vision specified optimizatiopn tool | 
-
-In Eigen, indices start at 0
-
-### Eigen Convenience typedefs
-
-#### Matrix and Array class with 3 majar template parameters 
-
-- Matrix: `Matrix<typename, RowsNumber, ColsNumber>`
-- Array: `Array<typename, RowsNumber, ColsNumber>`
-
-#### Matrix: 
->linear algebraic operations
-
- - Matrix**Nt**: `Matrix<t, N, N>`
- - Matrix**XNt**: `Matrix<type, Dynamic, N>`
- - Matrix**Xt**: `Matrix<double, Dynamic, Dynamic>`
- - Matrix**NXt**: `Matrix<type, N, Dynamic>`
- - Vector**Nt**: `Matrix<type, N, 1>`
- - RowVector**Nt**: `Matrix<type, 1, N>`
-
-#### Array: 
->coefficient-wise(element-wise) operations
- - Array**Xt**: `Array<t,Dynamic,1> `
- - Array**Nt**: `Array<t,N,1> `
- - Array**XXt**: `Array<t,Dynamic,Dynamic> `
- - Array**NNt**: `Array<t,N,N> `
-
- Where: 
- - **N** can be any one of 2, 3, 4, or X(Dynamic).
- - **t** can be any one of **i**(int), **f**(float), **d**(double), **cf**(complex\<float\>), or **cd**(complex\<double\>).
-
-For example, the statement `result = m.array() * n.array()` takes two matrices `m` and `n`, converts them both to an array, uses to multiply them coefficient-wise and assigns the result to the **matrix variable** result.
->This is legal because Eigen allows assigning(=) **array expressions** to **matrix variables**.
-
-### Block operations
-
-| Block operation |  Dynamic-size block  | Fixed-size block  |
-| ------ | ----------- | ----------- |
-| `Block of size (p,q), starting at (i,j)`   | `matrix.block(i,j,p,q);` | `matrix.block<p,q>(i,j);` |
-> Indices `(i,j)` start at 0 !
-> Note: Self block assignment may cause aliasing problem. Use `.eval()` for resolving.
+| g2o   | Computer vision specified optimizatiopn tool | 
+| GTSAM   | Factor Graph based optimizatiopn tool | 
 
 
 [Github]: <https://github.com/>
-[VS Code Download]: <https://code.visualstudio.com/download>
+[VS-Code Download]: <https://code.visualstudio.com/download>
 [VS Keyboard Shortcut]: <https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf>
-[Intro to Git in VS Code]: <https://code.visualstudio.com/docs/sourcecontrol/intro-to-git>
+[Intro to Git in VS-Code]: <https://code.visualstudio.com/docs/sourcecontrol/intro-to-git>
+[cmake CMakeLists.txt]: <https://cmake.org/cmake/help/latest/guide/tutorial/index.html>
+[catkin CMakeLists.txt]: <http://wiki.ros.org/catkin/CMakeLists.txt>
+[catkin package.xml]: <http://wiki.ros.org/catkin/package.xml>
