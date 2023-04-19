@@ -19,7 +19,7 @@
 
 
  - **Cmake Project**, in build folder, use command `cmake -G "Eclipse CDT4 - Unix Makefiles"`
- - **ROS Package**, in catkin_ws folder, use command `catkin config -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Release` 
+ - **ROS Package**, in catkin_ws folder, use command `catkin config -G"Eclipse CDT4 - Unix Makefiles" -DCMAKE_BUILD_TYPE=Release` or `catkin build packageName --cmake-args -G"Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Release`
  - **Cmake Project** use `cmake` [cmake CMakeLists.txt].
  - **ROS Package** use `catkin build` [catkin CMakeLists.txt] and  [catkin package.xml]
  - Configure **Cmake** and **Eclipse** for project *debug* or *run*
