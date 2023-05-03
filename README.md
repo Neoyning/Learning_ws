@@ -25,7 +25,7 @@
  - Configure **Cmake** and **Eclipse** for project *debug* or *run*
 
 
-> **Method 1** `cmake -G"Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -DEigen3_DIR=$HOME/git/eigen-3.3.7 ../../src/learnCeres/` (Preferred). Or 
+> **Method 1** `cmake -G"Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -DEigen3_DIR=$HOME/git/eigen-3.3.7 -D GTSAM_USE_SYSTEM_EIGEN=ON ../../src/learnCeres/` (Preferred). Or 
 
 > **Method 2** `set(CMAKE_BUILD_TYPE Debug)	#set to Debug or Release` in `CMakeLists.txt` file. 
 
